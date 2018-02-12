@@ -2,6 +2,7 @@ package com.okta.example.server.resources;
 
 import com.okta.example.server.dao.StormtrooperDao;
 import com.okta.example.server.model.Stormtrooper;
+import io.swagger.annotations.Api;
 
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -16,6 +17,7 @@ import java.util.Collection;
 /**
  * Stormtrooper Resource.
  */
+@Api(value = "Stormtrooper", tags = {""})
 @Path("/troopers")
 @Produces("application/json")
 public class StormtrooperResource {

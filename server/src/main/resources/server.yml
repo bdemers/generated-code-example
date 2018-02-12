@@ -1,0 +1,8 @@
+swagger:
+  resourcePackage: com.okta.example.server.resources
+  title: Generate code that doesn't suck
+  description: Simple example code to demonstrate different ways to generate code.
+  contact: Brian Demers
+  contactEmail: bdemers@apache.org
+  license: Apache 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
