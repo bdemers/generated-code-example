@@ -16,21 +16,21 @@
 {{>licenseInfo}}
 package {{package}};
 
-import com.okta.sdk.cache.CacheManager;
-import com.okta.sdk.client.AuthenticationScheme;
-import com.okta.sdk.client.Proxy;
-import com.okta.sdk.impl.api.ClientCredentialsResolver;
-import com.okta.sdk.impl.http.authc.RequestAuthenticatorFactory;
-import com.okta.sdk.impl.util.BaseUrlResolver;
-import com.okta.sdk.impl.http.QueryString;
+import com.okta.example.sdk.cache.CacheManager;
+import com.okta.example.sdk.client.AuthenticationScheme;
+import com.okta.example.sdk.client.Proxy;
+import com.okta.example.sdk.impl.api.ClientCredentialsResolver;
+import com.okta.example.sdk.impl.http.authc.RequestAuthenticatorFactory;
+import com.okta.example.sdk.impl.util.BaseUrlResolver;
+import com.okta.example.sdk.impl.http.QueryString;
 
 import {{vendorExtensions.overrideApiPackage}}.*;
 
 {{#imports}}import {{import}};
 {{/imports}}
-import com.okta.sdk.impl.client.AbstractClient;
-import com.okta.sdk.impl.ds.InternalDataStore;
-import com.okta.sdk.impl.resource.DefaultVoidResource;
+import com.okta.example.sdk.impl.client.AbstractClient;
+import com.okta.example.sdk.impl.ds.InternalDataStore;
+import com.okta.example.sdk.impl.resource.DefaultVoidResource;
 
 import java.util.LinkedHashMap;
 {{^fullJavaUtil}}
@@ -40,8 +40,8 @@ import java.util.List;
 import java.util.Map;
 {{/fullJavaUtil}}
 
-import static com.okta.sdk.lang.Assert.notNull;
-import static com.okta.sdk.lang.Assert.hasText;
+import static com.okta.example.sdk.lang.Assert.notNull;
+import static com.okta.example.sdk.lang.Assert.hasText;
 
 {{#operations}}
     @javax.annotation.Generated(

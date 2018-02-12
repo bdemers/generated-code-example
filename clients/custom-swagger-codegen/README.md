@@ -1,5 +1,5 @@
 [<img src="https://devforum.okta.com/uploads/oktadev/original/1X/bf54a16b5fda189e4ad2706fb57cbb7a1e5b8deb.png" align="right" width="256px"/>](https://devforum.okta.com/)
-[![Maven Central](https://img.shields.io/maven-central/v/com.okta.sdk/okta-sdk-api.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.okta.sdk%22%20a%3A%22okta-sdk-api%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.okta.example.sdk/okta-sdk-api.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.okta.example.sdk%22%20a%3A%22okta-sdk-api%22)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Support](https://img.shields.io/badge/support-Developer%20Forum-blue.svg)](https://devforum.okta.com/)
 
@@ -7,7 +7,7 @@
 
 This SDK is in EA, so all existing features are supported by Okta in a production setting.
 
-This version of the Okta Java SDK supports CRUD (Create, Read, Update, Delete) operations for the following resource:
+This version of the Okta Java Example SDK supports CRUD (Create, Read, Update, Delete) operations for the following resource:
 - User
 - Group
 - Group Membership Rules
@@ -24,18 +24,18 @@ The only compile time dependency you will need is `okta-sdk-api`.  You will also
 
 ``` xml
 <dependency>
-    <groupId>com.okta.sdk</groupId>
+    <groupId>com.okta.example.sdk</groupId>
     <artifactId>okta-sdk-api</artifactId>
     <version>${okta.version}</version>
 </dependency>
 <dependency>
-    <groupId>com.okta.sdk</groupId>
+    <groupId>com.okta.example.sdk</groupId>
     <artifactId>okta-sdk-impl</artifactId>
     <version>${okta.version}</version>
     <scope>runtime</scope>
 </dependency>
 <dependency>
-    <groupId>com.okta.sdk</groupId>
+    <groupId>com.okta.example.sdk</groupId>
     <artifactId>okta-sdk-httpclient</artifactId>
     <version>${okta.version}</version>
     <scope>runtime</scope>

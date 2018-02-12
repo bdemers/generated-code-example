@@ -1,0 +1,60 @@
+/*
+ * Copyright 2014 Stormpath, Inc.
+ * Modifications Copyright 2018 Okta, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.okta.example.sdk.impl.config;
+
+import com.okta.example.sdk.impl.test.RestoreEnvironmentVariables;
+import com.okta.example.sdk.impl.test.RestoreSystemProperties;
+import com.okta.example.sdk.impl.test.RestoreEnvironmentVariables;
+import com.okta.example.sdk.impl.test.RestoreSystemProperties;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
+import static com.okta.example.sdk.impl.test.RestoreEnvironmentVariables.setEnvironmentVariable;
+import static com.okta.example.sdk.impl.test.RestoreEnvironmentVariables.clearEnvironmentVariables;
+
+
+/**
+ * @since 0.5.0
+ *
+ * NOTE: This *exact* same test was not working in groovy, which is why it's implemented in Java
+ */
+@Listeners({RestoreSystemProperties.class, RestoreEnvironmentVariables.class})
+public class EnvironmentVariablesPropertiesSourceTest {
+
+    @Test
+    public void testGetProperties() {
+
+        RestoreEnvironmentVariables.setEnvironmentVariable("my_special_key", "my_special_value");
+        Map<String, String> props = new EnvironmentVariablesPropertiesSource().getProperties();
+
+        assertEquals(props.get("my_special_key"), "my_special_value");
+    }
+
+    @Test
+    public void testGetPropertiesEmpty() {
+
+        RestoreEnvironmentVariables.clearEnvironmentVariables();
+
+        Map<String, String> props = new EnvironmentVariablesPropertiesSource().getProperties();
+
+        assertEquals(props.size(), 0);
+    }
+
+}

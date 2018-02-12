@@ -15,18 +15,18 @@
  */
 package quickstart;
 
-import com.okta.sdk.client.Client;
-import com.okta.sdk.client.ClientBuilder;
-import com.okta.sdk.client.Clients;
-import com.okta.sdk.resource.Stormtrooper;
-import com.okta.sdk.resource.StormtrooperList;
-import com.okta.sdk.resource.ResourceException;
-import com.okta.sdk.resource.trooper.StormtrooperBuilder;
+import com.okta.example.sdk.client.Client;
+import com.okta.example.sdk.client.ClientBuilder;
+import com.okta.example.sdk.client.Clients;
+import com.okta.example.sdk.resource.Stormtrooper;
+import com.okta.example.sdk.resource.StormtrooperList;
+import com.okta.example.sdk.resource.ResourceException;
+import com.okta.example.sdk.resource.trooper.StormtrooperBuilder;
 
 import java.util.UUID;
 
 /**
- * This class demonstrates the code found in the Okta Java SDK QuickStart Guide
+ * This class demonstrates the code found in the Okta Java Example SDK QuickStart Guide
  *
  * @since 0.5.0
  */

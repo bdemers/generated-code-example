@@ -24,13 +24,13 @@
         <relativePath>../okta-java-parent</relativePath>
     </parent>
 
-    <groupId>com.okta.sdk</groupId>
+    <groupId>com.okta.example.sdk</groupId>
     <artifactId>okta-sdk-root</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Okta Java SDK</name>
-    <description>Okta SDK for Java</description>
+    <name>Okta Java Example SDK</name>
+    <description>Okta Example SDK for Java</description>
     <url>https://github.com/okta/oktasdk-java</url>
     <inceptionYear>2017</inceptionYear>
 
@@ -39,9 +39,8 @@
         <jackson.version>2.8.8</jackson.version>
         <snakeyaml.version>1.17</snakeyaml.version>
         <jjwt.version>0.6.0</jjwt.version>
-        <okta.sdk.pereviousVersion>0.10.0</okta.sdk.pereviousVersion>
 
-        <github.slug>okta/okta-sdk-java</github.slug>
+        <github.slug>not/valid</github.slug>
     </properties>
 
 
@@ -60,36 +59,36 @@
 
             <!-- Inter project dependencies -->
             <dependency>
-                <groupId>com.okta.sdk</groupId>
+                <groupId>com.okta.example.sdk</groupId>
                 <artifactId>okta-sdk-api</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.okta.sdk</groupId>
+                <groupId>com.okta.example.sdk</groupId>
                 <artifactId>okta-sdk-impl</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.okta.sdk</groupId>
+                <groupId>com.okta.example.sdk</groupId>
                 <artifactId>okta-api-swagger-templates</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.okta.sdk</groupId>
+                <groupId>com.okta.example.sdk</groupId>
                 <artifactId>okta-sdk-httpclient</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
 
             <!-- ITs -->
             <dependency>
-                <groupId>com.okta.sdk</groupId>
+                <groupId>com.okta.example.sdk</groupId>
                 <artifactId>okta-sdk-integration-tests</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
 
             <!-- Examples -->
             <dependency>
-                <groupId>com.okta.sdk</groupId>
+                <groupId>com.okta.example.sdk</groupId>
                 <artifactId>okta-sdk-examples-quickstart</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
@@ -224,13 +223,13 @@
                         <excludes>
                             <!-- lang contains a few files copied from other projects -->
                             <exclude>**/lang/*.java</exclude>
-                            <exclude>**/com/okta/sdk/impl/http/MediaType.java</exclude>
-                            <exclude>**/com/okta/sdk/impl/util/Base64.java</exclude>
-                            <exclude>**/com/okta/sdk/impl/util/BaseNCodec.java</exclude>
-                            <exclude>**/com/okta/sdk/impl/util/LinkedCaseInsensitiveMap</exclude>
-                            <exclude>**/com/okta/sdk/impl/util/MimeType.java</exclude>
+                            <exclude>**/com/okta/example/sdk/impl/http/MediaType.java</exclude>
+                            <exclude>**/com/okta/example/sdk/impl/util/Base64.java</exclude>
+                            <exclude>**/com/okta/example/sdk/impl/util/BaseNCodec.java</exclude>
+                            <exclude>**/com/okta/example/sdk/impl/util/LinkedCaseInsensitiveMap</exclude>
+                            <exclude>**/com/okta/example/sdk/impl/util/MimeType.java</exclude>
                             <!-- caching needs a little work -->
-                            <exclude>**/com/okta/sdk/impl/ds/cache/WriteCacheFilter.java</exclude>
+                            <exclude>**/com/okta/example/sdk/impl/ds/cache/WriteCacheFilter.java</exclude>
                         </excludes>
                     </configuration>
                 </plugin>
@@ -240,7 +239,7 @@
                     <configuration>
                         <!-- exclude generated enums coverage -->
                         <excludes>
-                            <exclude>**/com/okta/sdk/resource/**/*</exclude>
+                            <exclude>**/com/okta/example/sdk/resource/**/*</exclude>
                             <exclude>**/quickstart/**/*</exclude>
                         </excludes>
                     </configuration>
@@ -258,7 +257,7 @@
                     </configuration>
                     <dependencies>
                         <dependency>
-                            <groupId>com.okta.sdk</groupId>
+                            <groupId>com.okta.example.sdk</groupId>
                             <artifactId>okta-api-swagger-templates</artifactId>
                             <version>1.0.1-SNAPSHOT</version>
                         </dependency>
@@ -299,40 +298,4 @@
             </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>ci</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.github.siom79.japicmp</groupId>
-                        <artifactId>japicmp-maven-plugin</artifactId>
-                        <version>0.10.0</version>
-                        <configuration>
-                            <oldVersion>
-                                <dependency>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>${project.artifactId}</artifactId>
-                                    <version>${okta.sdk.pereviousVersion}</version>
-                                    <type>jar</type>
-                                </dependency>
-                            </oldVersion>
-                            <parameter>
-                                <onlyModified>true</onlyModified>
-                                <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
-                            </parameter>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>japicmp</id>
-                                <goals>
-                                    <goal>cmp</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

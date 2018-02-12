@@ -19,14 +19,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.okta.sdk</groupId>
+        <groupId>com.okta.example.sdk</groupId>
         <artifactId>okta-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>okta-sdk-examples</artifactId>
-    <groupId>com.okta.sdk</groupId>
-    <name>Okta Java SDK :: Examples</name>
+    <groupId>com.okta.example.sdk</groupId>
+    <name>Okta Java Example SDK :: Examples</name>
     <packaging>pom</packaging>
 
     <modules>

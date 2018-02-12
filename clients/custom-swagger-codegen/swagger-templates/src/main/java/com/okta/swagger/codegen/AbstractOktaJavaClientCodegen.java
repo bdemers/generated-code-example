@@ -95,8 +95,8 @@ public abstract class AbstractOktaJavaClientCodegen extends AbstractJavaCodegen 
 
         this.modelPackage = modelPackage;
         // TODO: these are hard coded for now, calling Maven Plugin does NOT set the packages correctly.
-        invokerPackage = "com.okta.sdk.invoker";
-        apiPackage = "com.okta.sdk.client";
+        invokerPackage = "com.okta.example.sdk.invoker";
+        apiPackage = "com.okta.example.sdk.client";
 
         apiTemplateFiles.clear();
         modelTemplateFiles.clear();

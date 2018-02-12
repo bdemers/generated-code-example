@@ -27,6 +27,6 @@
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
-    <logger name="com.okta.sdk.impl.ds.DefaultDataStore" level="INFO"/>
+    <logger name="com.okta.example.sdk.impl.ds.DefaultDataStore" level="INFO"/>
 
 </configuration>

@@ -18,27 +18,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.okta.sdk</groupId>
+        <groupId>com.okta.example.sdk</groupId>
         <artifactId>okta-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>okta-sdk-integration-tests</artifactId>
-    <name>Okta Java SDK :: Integration Tests</name>
+    <name>Okta Java Example SDK :: Integration Tests</name>
     <description>Integration tests using the httpclient module</description>
 
     <dependencies>
         <dependency>
-            <groupId>com.okta.sdk</groupId>
+            <groupId>com.okta.example.sdk</groupId>
             <artifactId>okta-sdk-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.okta.sdk</groupId>
+            <groupId>com.okta.example.sdk</groupId>
             <artifactId>okta-sdk-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.okta.sdk</groupId>
+            <groupId>com.okta.example.sdk</groupId>
             <artifactId>okta-sdk-httpclient</artifactId>
             <scope>runtime</scope>
         </dependency>

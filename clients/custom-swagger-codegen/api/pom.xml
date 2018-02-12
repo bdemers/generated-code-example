@@ -19,16 +19,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.okta.sdk</groupId>
+        <groupId>com.okta.example.sdk</groupId>
         <artifactId>okta-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>okta-sdk-api</artifactId>
-    <name>Okta Java SDK :: API</name>
+    <name>Okta Java Example SDK :: API</name>
     <description>
-        The Okta Java SDK API .jar provides a Java API that your code can use to make calls to the Okta
-        API. This .jar is the only compile-time dependency within the Okta SDK project that your code should
+        The Okta Java Example SDK API .jar provides a Java API that your code can use to make calls to the Okta
+        API. This .jar is the only compile-time dependency within the Okta Example SDK project that your code should
         depend on. Implementations of this API (implementation .jars) should be runtime dependencies only.
     </description>
     <packaging>jar</packaging>

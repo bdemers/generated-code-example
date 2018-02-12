@@ -19,13 +19,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.okta.sdk</groupId>
+        <groupId>com.okta.example.sdk</groupId>
         <artifactId>okta-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>okta-api-swagger-templates</artifactId>
-    <name>Okta Java SDK :: Swagger Templates</name>
+    <name>Okta Java Example SDK :: Swagger Templates</name>
 
     <properties>
         <swagger-version>2.2.3</swagger-version>

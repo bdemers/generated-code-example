@@ -55,7 +55,7 @@ function send_tag_notification()
 
     curl -s --user "${MAILGUN_API_KEY}" \
          https:/api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages\
-         -F from="Okta SDK Notifications <postmaster@${MAILGUN_DOMAIN}>"\
+         -F from="Okta Example SDK Notifications <postmaster@${MAILGUN_DOMAIN}>"\
          -F to="${MAIL_TO}"\
          -F subject="New Tag for ${REPO_SLUG}" \
          -F text="A new tag was created for ${REPO_SLUG} - ${GIT_TAG}"
