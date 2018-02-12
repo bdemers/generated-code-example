@@ -1,0 +1,122 @@
+{{!
+    Copyright 2017 Okta
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+}}
+import java.util.Map;
+import com.okta.sdk.resource.Resource;
+import com.okta.sdk.resource.Deletable;
+import com.okta.sdk.resource.Saveable;
+{{#vendorExtensions.x-okta-extensible}}import com.okta.sdk.resource.PropertyRetriever;{{/vendorExtensions.x-okta-extensible}}
+{{#models}}{{#model}}
+/**
+ * {{#description}}{{.}}{{/description}}{{^description}}{{classname}}{{/description}}
+ */
+{{>generatedAnnotation}}{{#discriminator}}{{>typeInfoAnnotation}}{{/discriminator}}
+public interface {{classname}} extends Resource{{#parent}}, {{.}}{{/parent}}{{#vendorExtensions.x-okta-extensible}}, PropertyRetriever, Map<String, Object>{{/vendorExtensions.x-okta-extensible}}{{#vendorExtensions.deletable}}, Deletable{{/vendorExtensions.deletable}} {
+
+{{#vars}}
+    {{#vendorExtensions.extraAnnotation}}
+        {{{vendorExtensions.extraAnnotation}}}
+    {{/vendorExtensions.extraAnnotation}}
+    {{{datatypeWithEnum}}} {{getter}}();
+{{^isReadOnly}}
+
+    {{classname}} {{setter}}({{{datatypeWithEnum}}} {{name}});
+{{/isReadOnly}}
+
+{{#isEnum}}
+    {{^isContainer}}
+        {{>modelInnerEnum}}
+    {{/isContainer}}
+{{/isEnum}}
+{{#items.isEnum}}
+    {{#items}}
+        {{^isContainer}}
+            {{>modelInnerEnum}}
+        {{/isContainer}}
+    {{/items}}
+{{/items.isEnum}}
+{{/vars}}
+{{#vendorExtensions.operations}}{{#.}}
+    /**
+    * {{summary}}
+    * {{notes}}
+    {{#vendorExtensions.allParams}}
+    * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
+    {{/vendorExtensions.allParams}}
+    {{#returnType}}
+    * @return {{returnType}}
+    {{/returnType}}
+    */
+    @javax.annotation.Generated(
+            value    = "{{generatorClass}}",
+            date     = "{{generatedDate}}",
+            comments = "{{httpMethod}} - {{path}}")
+    {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{#vendorExtensions.alias}}{{vendorExtensions.alias}}{{/vendorExtensions.alias}}{{^vendorExtensions.alias}}{{operationId}}{{/vendorExtensions.alias}}({{#vendorExtensions.allParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/vendorExtensions.allParams}});
+
+{{#vendorExtensions.hasOptional}}
+    /**
+    * {{summary}}
+    * {{notes}}
+    {{#vendorExtensions.nonOptionalParams}}
+    * @param {{paramName}} {{description}} (required)
+    {{/vendorExtensions.nonOptionalParams}}
+    {{#returnType}}
+    * @return {{returnType}}
+    {{/returnType}}
+    */
+    @javax.annotation.Generated(
+            value    = "{{generatorClass}}",
+            date     = "{{generatedDate}}",
+            comments = "{{httpMethod}} - {{path}}")
+    {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{#vendorExtensions.alias}}{{vendorExtensions.alias}}{{/vendorExtensions.alias}}{{^vendorExtensions.alias}}{{operationId}}{{/vendorExtensions.alias}}({{#vendorExtensions.nonOptionalParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/vendorExtensions.nonOptionalParams}});
+
+{{/vendorExtensions.hasOptional}}{{/.}}{{/vendorExtensions.operations}}
+
+{{#operation}}{{^vendorExtensions.moved}}
+    /**
+    * {{summary}}
+    * {{notes}}
+    {{#allParams}}
+    * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
+    {{/allParams}}
+    {{#returnType}}
+    * @return {{returnType}}
+    {{/returnType}}
+    */
+    @javax.annotation.Generated(
+        value    = "{{generatorClass}}",
+        date     = "{{generatedDate}}",
+        comments = "{{httpMethod}} - {{path}}")
+    {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+
+{{#vendorExtensions.hasOptional}}
+    /**
+    * {{summary}}
+    * {{notes}}
+    {{#vendorExtensions.nonOptionalParams}}
+    * @param {{paramName}} {{description}} (required)
+    {{/vendorExtensions.nonOptionalParams}}
+    {{#returnType}}
+    * @return {{returnType}}
+    {{/returnType}}
+    */
+    @javax.annotation.Generated(
+            value    = "{{generatorClass}}",
+            date     = "{{generatedDate}}",
+            comments = "{{httpMethod}} - {{path}}")
+    {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#vendorExtensions.nonOptionalParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/vendorExtensions.nonOptionalParams}});
+{{/vendorExtensions.hasOptional}}{{/vendorExtensions.moved}}{{/operation}}
+}
+{{/model}}{{/models}}
