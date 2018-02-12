@@ -705,8 +705,8 @@ public abstract class AbstractOktaJavaClientCodegen extends AbstractJavaCodegen 
 
     private void addOptionalExtension(CodegenOperation co, List<CodegenParameter> params) {
 
+        boolean optional = false;
         if (params.parallelStream().anyMatch(param -> !param.required)) {
-            co.vendorExtensions.put("hasOptional", true);
 
             List<CodegenParameter> nonOptionalParams = params.stream()
                     .filter(param -> param.required)
@@ -717,18 +717,22 @@ public abstract class AbstractOktaJavaClientCodegen extends AbstractJavaCodegen 
                 CodegenParameter param = nonOptionalParams.get(nonOptionalParams.size()-1);
                 param.hasMore = false;
                 co.vendorExtensions.put("nonOptionalParams", nonOptionalParams);
+                optional = true;
             }
 
             // remove the noOptionalParams if we have trimmed down the list.
             if (co.vendorExtensions.get("nonOptionalParams") != null && nonOptionalParams.isEmpty()) {
                 co.vendorExtensions.remove("nonOptionalParams");
+                optional = true;
             }
 
             // remove th body parameter if it was optional
             if (co.bodyParam != null && !co.bodyParam.required) {
                 co.vendorExtensions.put("optionalBody", true);
+                optional = true;
             }
         }
+        co.vendorExtensions.put("hasOptional", optional);
     }
 
     @Override

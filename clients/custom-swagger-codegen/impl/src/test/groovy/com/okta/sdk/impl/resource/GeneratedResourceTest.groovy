@@ -113,7 +113,7 @@ class GeneratedResourceTest {
                 .forEach {
             def result = it.invoke(resource)
             if (it.returnType == String) {
-                assertThat it.invoke(resource), equalToObject("value for: ${it.name}".toString())
+                assertThat "Method: '${clazz.name}.${it.name}()'", it.invoke(resource), equalToObject("value for: ${it.name}".toString())
             }
             else if (it.returnType == Integer){
                 assertThat it.invoke(resource), equalToObject(42)

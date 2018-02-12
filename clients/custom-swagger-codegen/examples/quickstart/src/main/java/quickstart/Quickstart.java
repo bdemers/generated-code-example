@@ -18,13 +18,10 @@ package quickstart;
 import com.okta.sdk.client.Client;
 import com.okta.sdk.client.ClientBuilder;
 import com.okta.sdk.client.Clients;
-import com.okta.sdk.resource.group.GroupBuilder;
+import com.okta.sdk.resource.Stormtrooper;
+import com.okta.sdk.resource.StormtrooperList;
 import com.okta.sdk.resource.ResourceException;
-import com.okta.sdk.resource.user.UserBuilder;
-
-import com.okta.sdk.resource.group.Group;
-import com.okta.sdk.resource.user.User;
-import com.okta.sdk.resource.user.UserList;
+import com.okta.sdk.resource.trooper.StormtrooperBuilder;
 
 import java.util.UUID;
 
@@ -43,58 +40,24 @@ public class Quickstart {
             ClientBuilder builder = Clients.builder();
 
             // No need to define anything else; build the Client instance. The ClientCredential information will be automatically found
-            // in pre-defined locations: i.e. ~/.okta/okta.yaml
+            // in pre-defined locations: i.e. ~/.okta/example-okta.yaml
             Client client = builder.build();
 
-            // Create a group
-            Group group = GroupBuilder.instance()
-                    .setName("my-user-group-" + UUID.randomUUID().toString())
-                    .setDescription("Quickstart created Group")
+            // Create a Stormtrooper
+            Stormtrooper stormtrooper = StormtrooperBuilder.instance()
+                    .setId("FN-"+ UUID.randomUUID().toString())
+                    .setPlanetOfOrigin("Earth")
+                    .setSpecies("Human")
+                    .setType("Basic")
                     .buildAndCreate(client);
 
-            println("Group: '" + group.getId() + "' was last updated on: " + group.getLastUpdated());
+            println("Created Stormtrooper: "+ stormtrooper);
 
-
-            // Create a User Account
-            String email = "joe.coder+" + UUID.randomUUID().toString() + "@example.com";
-
-            char[] password = {'P','a','s','s','w','o','r','d','1'};
-            User user = UserBuilder.instance()
-                .setEmail(email)
-                .setFirstName("Joe")
-                .setLastName("Coder")
-                .setPassword(password)
-                .setSecurityQuestion("Favorite security question?")
-                .setSecurityQuestionAnswer("None of them!")
-                .putProfileProperty("division", "Seven") // key/value pairs predefined in the user profile schema
-                .setActive(true)
-                .buildAndCreate(client);
-
-            // add user to the newly created group
-            user.addToGroup(group.getId());
-
-            String userId = user.getId();
-            println("User created with ID: " + userId);
-
-            // You can look up user by ID
-            println("User lookup by ID: "+ client.getUser(userId).getProfile().getLogin());
-
-            // or by Email
-            println("User lookup by Email: "+ client.getUser(email).getProfile().getLogin());
-
-
-            // get the list of users
-            UserList users = client.listUsers();
+            // get the list of stormtroopers
+            StormtrooperList troopers = client.listTroopers();
 
             // get the first user in the collection
-            println("First user in collection: " + users.iterator().next().getProfile().getEmail());
-
-            // or loop through all of them (paging is automatic)
-//            int ii = 0;
-//            for (User tmpUser : users) {
-//                println("["+ ii++ +"] User: " + tmpUser.getProfile().getEmail());
-//            }
-
+            println("First trooper in collection: " + troopers.stream().findFirst().get());
         }
         catch (ResourceException e) {
 

@@ -21,14 +21,6 @@ import com.okta.sdk.client.Clients
 import com.okta.sdk.impl.cache.DisabledCacheManager
 import com.okta.sdk.lang.Strings
 import com.okta.sdk.resource.Deletable
-import com.okta.sdk.resource.ResourceException
-import com.okta.sdk.resource.application.Application
-import com.okta.sdk.resource.group.GroupList
-import com.okta.sdk.resource.group.rule.GroupRule
-import com.okta.sdk.resource.group.rule.GroupRuleList
-import com.okta.sdk.resource.group.rule.GroupRuleStatus
-import com.okta.sdk.resource.user.User
-import com.okta.sdk.resource.user.UserStatus
 import com.okta.sdk.tests.Scenario
 import com.okta.sdk.tests.TestResources
 import org.slf4j.Logger
@@ -127,54 +119,12 @@ trait ClientProvider implements IHookable {
         toBeDeleted.add(deletable)
     }
 
-    void deleteUser(String email, Client client) {
-        Util.ignoring(ResourceException) {
-            User user = client.getUser(email)
-            if (user.status != UserStatus.DEPROVISIONED) {
-                user.deactivate()
-            }
-            user.delete()
-        }
-    }
-
-    void deleteGroup(String groupName, Client client) {
-        Util.ignoring(ResourceException) {
-            GroupList groups = client.listGroups(groupName, null, null)
-            groups.each {group ->
-                if (groupName.equals(group.profile.name)) {
-                    group.delete()
-                }
-            }
-        }
-    }
-
-    void deleteRule(String ruleName, Client client) {
-        Util.ignoring(ResourceException) {
-            GroupRuleList rules = client.listRules()
-            rules.each {rule ->
-                if (ruleName.equals(rule.name)) {
-                    if (rule.status == GroupRuleStatus.ACTIVE) {
-                        rule.deactivate()
-                    }
-                    rule.delete()
-                }
-            }
-        }
-    }
-
     @AfterMethod
     void clean() {
         if (!isRunningWithTestServer()) {
             // delete them in reverse order so dependencies are resolved
             toBeDeleted.reverse().each { deletable ->
                 try {
-                    if (deletable instanceof User) {
-                        deletable.deactivate()
-                    } else if (deletable instanceof GroupRule) {
-                        deletable.deactivate()
-                    } else if (deletable instanceof Application) {
-                        deletable.deactivate()
-                    }
                     deletable.delete()
                 }
                 catch (Exception e) {

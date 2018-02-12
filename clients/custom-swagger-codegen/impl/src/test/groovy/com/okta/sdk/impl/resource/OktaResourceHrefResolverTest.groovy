@@ -15,11 +15,8 @@
  */
 package com.okta.sdk.impl.resource
 
-import com.okta.sdk.resource.application.AppUser
-import com.okta.sdk.resource.application.Application
-import com.okta.sdk.resource.group.Group
-import com.okta.sdk.resource.group.rule.GroupRule
-import com.okta.sdk.resource.user.User
+import com.okta.sdk.resource.Stormtrooper
+import com.okta.sdk.resource.TieCraft
 import org.testng.annotations.Test
 
 import static org.hamcrest.MatcherAssert.assertThat
@@ -47,9 +44,9 @@ class OktaResourceHrefResolverTest {
                     foo: "bar"
             ]]]
 
-        assertThat resolver.resolveHref(Collections.emptyMap(), User), nullValue()
-        assertThat resolver.resolveHref(nullHrefProps, User), nullValue()
-        assertThat resolver.resolveHref(missingHrefProps, User), nullValue()
+        assertThat resolver.resolveHref(Collections.emptyMap(), TestResource), nullValue()
+        assertThat resolver.resolveHref(nullHrefProps, TestResource), nullValue()
+        assertThat resolver.resolveHref(missingHrefProps, TestResource), nullValue()
     }
 
     @Test
@@ -63,116 +60,33 @@ class OktaResourceHrefResolverTest {
             ]]]
 
         ResourceHrefResolver resolver = new OktaResourceHrefResolver()
-        assertThat resolver.resolveHref(props, User), equalTo(selfHref)
+        assertThat resolver.resolveHref(props, TestResource), equalTo(selfHref)
         assertThat resolver.resolveHref(props, null), equalTo(selfHref) // clazz doesn't matter when self link is set
     }
 
     @Test
-    void appUserHrefTest() {
+    void stormtrooperHrefTest() {
 
+        String resourceId = "sp-id"
         Map<String, ?> props = [
-            id: "this-user-id",
-            _links: [
-                app: [
-                    href: "https://okta-test.example.com/api/v1/apps/an-app-id"
-                ],
-                user: [
-                    href: "https://okta-test.example.com/api/v1/users/a-user-id"
-                ],
-                group: [
-                    name: "Everyone",
-                    href: "https://okta-test.example.com/api/v1/groups/everyone-id"
-                ]
-            ]
+            id: resourceId
         ]
 
         ResourceHrefResolver resolver = new OktaResourceHrefResolver()
-        assertThat resolver.resolveHref(props, AppUser), equalTo("https://okta-test.example.com/api/v1/apps/an-app-id/users/this-user-id")
-        assertThat resolver.resolveHref(props, User), nullValue() // wrong class, so this should return null
+        assertThat resolver.resolveHref(props, Stormtrooper), equalTo("/trooper/${resourceId}".toString())
+        assertThat resolver.resolveHref(props, TestResource), nullValue() // wrong class, so this should return null
     }
 
     @Test
-    void applicationHrefTest() {
+    void tieCraftHrefTest() {
 
-        String appId = "this-app-id"
+        String resourceId = "tie-id"
         Map<String, ?> props = [
-            id: appId,
-            _links: [
-                appLinks: [
-                    [
-                        name: "oidc_client_link",
-                        href: "https://okta-test.example.com/home/oidc_client/${appId}/aln5z7uhkbM6y7bMy0g7",
-                        type: "text/html"
-                    ]
-                ],
-                groups: [
-                    href: "https://okta-test.example.com/api/v1/apps/${appId}/groups"
-                ],
-                logo: [
-                    [
-                        name: "medium",
-                        href: "https://op1static.oktacdn.com/assets/img/logos/default.some-image.png",
-                        type: "image/png"
-                    ]
-                ],
-                users: [
-                    href: "https://okta-test.example.com/api/v1/apps/${appId}/users"
-                ],
-                deactivate: [
-                    href: "https://okta-test.example.com/api/v1/apps/${appId}/lifecycle/deactivate"
-                ]
-            ]
+            serial: resourceId
         ]
 
         ResourceHrefResolver resolver = new OktaResourceHrefResolver()
-        assertThat resolver.resolveHref(props, Application), equalTo("https://okta-test.example.com/api/v1/apps/this-app-id")
-        assertThat resolver.resolveHref(props, User), nullValue() // wrong class, so this should return null
+        assertThat resolver.resolveHref(props, TieCraft), equalTo("/tie/${resourceId}".toString())
+        assertThat resolver.resolveHref(props, TestResource), nullValue() // wrong class, so this should return null
     }
-
-    @Test
-    void groupHrefTest() {
-
-        String groupId = "this-group-id"
-        Map<String, ?> props = [
-            id: groupId,
-            _links: [
-                logo: [
-                    [
-                        name: "medium",
-                        href: "https://op1static.oktacdn.com/assets/img/logos/groups/okta-medium.some-image.png",
-                        type: "image/png"
-                    ],
-                    [
-                        name: "large",
-                        href: "https://op1static.oktacdn.com/assets/img/logos/groups/okta-large.some-image.png",
-                        type: "image/png"
-                    ]
-                ],
-                users: [
-                    href: "https://okta-test.example.com/api/v1/groups/${groupId}/users"
-                ],
-                apps: [
-                    href: "https://okta-test.example.com/api/v1/groups/${groupId}/apps"
-                ]
-            ]
-        ]
-
-        ResourceHrefResolver resolver = new OktaResourceHrefResolver()
-        assertThat resolver.resolveHref(props, Group), equalTo("/api/v1/groups/this-group-id".toString())
-        assertThat resolver.resolveHref(props, User), nullValue() // wrong class, so this should return null
-    }
-
-    @Test
-    void groupRuleHrefTest() {
-
-        String groupRuleId = "this-group-rule-id"
-        Map<String, ?> props = [
-            id: groupRuleId
-        ]
-
-        ResourceHrefResolver resolver = new OktaResourceHrefResolver()
-        assertThat resolver.resolveHref(props, GroupRule), equalTo("/api/v1/groups/rules/this-group-rule-id".toString())
-        assertThat resolver.resolveHref(props, User), nullValue() // wrong class, so this should return null
-    }
-
 }

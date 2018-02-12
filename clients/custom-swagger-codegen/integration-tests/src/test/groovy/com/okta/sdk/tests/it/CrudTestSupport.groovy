@@ -42,13 +42,13 @@ trait CrudTestSupport implements ClientProvider {
         def resource = create(client)
 
         // getting the resource again should result in the same object
-        def readResource = read(client, resource.id)
+        def readResource = read(client, getResourceId(resource))
         assertThat readResource, notNullValue()
         assertThat readResource, equalTo(resource)
 
         // update the resource
         update(client, resource)
-        assertUpdate(client, read(client, resource.id))
+        assertUpdate(client, read(client, getResourceId(resource)))
 
         // delete the resource
         delete(client, resource)
@@ -62,7 +62,7 @@ trait CrudTestSupport implements ClientProvider {
         def resource = create(client)
         // search the resource collection looking for the new resource
         Optional optional = getResourceListStream(client)
-                                .filter {it.id == resource.id}
+                                .filter {getResourceId(it) == getResourceId(resource)}
                                 .findFirst()
 
         // make sure it exists
@@ -70,6 +70,8 @@ trait CrudTestSupport implements ClientProvider {
     }
 
     void preTestSetup(Client client) {}
+
+    abstract String getResourceId(def resource)
 
     abstract def create(Client client)
 
@@ -87,15 +89,12 @@ trait CrudTestSupport implements ClientProvider {
 
     // delete
     void delete(Client client, def resource) {
-        if (resource.metaClass.respondsTo(resource, "deactivate")) {
-            resource.deactivate()
-        }
         resource.delete()
     }
 
     void assertDelete(Client client, def resource) {
         try {
-            read(client, resource.id)
+            read(client, getResourceId(resource))
             Assert.fail("Expected ResourceException (404)")
         } catch (ResourceException e) {
             assertThat e.status, equalTo(404)

@@ -16,13 +16,12 @@
 package com.okta.sdk.impl.resource;
 
 import com.okta.sdk.impl.ds.InternalDataStore;
-import com.okta.sdk.resource.user.User;
 
 import java.util.Map;
 
 public class TestCollectionResource extends AbstractCollectionResource<TestResource> {
 
-    private static final ArrayProperty<User> ITEMS = new ArrayProperty<>("items", User.class);
+    private static final ArrayProperty<StubResource> ITEMS = new ArrayProperty<>("items", StubResource.class);
     private static final Map<String, Property> PROPERTY_DESCRIPTORS = createPropertyDescriptorMap(ITEMS);
 
     protected TestCollectionResource(InternalDataStore dataStore) {

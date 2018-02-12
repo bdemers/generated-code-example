@@ -15,7 +15,6 @@
  */
 package com.okta.sdk.impl.resource
 
-import com.okta.sdk.resource.user.User
 import org.testng.annotations.Test
 
 import static org.hamcrest.MatcherAssert.assertThat
@@ -41,9 +40,9 @@ class HalResourceHrefResolverTest {
                     foo: "bar"
             ]]]
 
-        assertThat resolver.resolveHref(Collections.emptyMap(), User), nullValue()
-        assertThat resolver.resolveHref(nullHrefProps, User), nullValue()
-        assertThat resolver.resolveHref(missingHrefProps, User), nullValue()
+        assertThat resolver.resolveHref(Collections.emptyMap(), TestResource), nullValue()
+        assertThat resolver.resolveHref(nullHrefProps, TestResource), nullValue()
+        assertThat resolver.resolveHref(missingHrefProps, TestResource), nullValue()
     }
 
     @Test
@@ -57,7 +56,7 @@ class HalResourceHrefResolverTest {
             ]]]
 
         ResourceHrefResolver resolver = new HalResourceHrefResolver()
-        assertThat resolver.resolveHref(props, User), equalTo(selfHref)
+        assertThat resolver.resolveHref(props, TestResource), equalTo(selfHref)
         assertThat resolver.resolveHref(props, null), equalTo(selfHref) // clazz doesn't matter when self link is set
     }
 
@@ -76,7 +75,7 @@ class HalResourceHrefResolverTest {
             ]]]
 
         ResourceHrefResolver resolver = new HalResourceHrefResolver()
-        assertThat resolver.resolveHref(props, User), equalTo(selfHref)
+        assertThat resolver.resolveHref(props, TestResource), equalTo(selfHref)
         assertThat resolver.resolveHref(props, null), equalTo(selfHref) // clazz doesn't matter when self link is set
     }
 }

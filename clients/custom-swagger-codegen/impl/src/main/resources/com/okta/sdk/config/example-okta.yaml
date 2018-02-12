@@ -16,9 +16,10 @@
 
 okta:
   client:
-    token:
+    orgUrl: http://localhost:8080
+    token: NOT_USED
     connectionTimeout: 30
-    authenticationScheme: SSWS
+    authenticationScheme: NONE
     cache:
       enabled: true
       defaultTtl: 300

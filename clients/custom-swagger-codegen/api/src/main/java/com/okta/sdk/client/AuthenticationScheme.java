@@ -30,7 +30,8 @@ import com.okta.sdk.lang.Assert;
  */
 public enum AuthenticationScheme {
 
-    SSWS("com.okta.sdk.impl.http.authc.SswsAuthenticator"); //SSWS Authentication
+    SSWS("com.okta.sdk.impl.http.authc.SswsAuthenticator"), //SSWS Authentication
+    NONE("com.okta.sdk.impl.http.authc.NoneAuthenticator");
 
     private final String requestAuthenticatorClassName;
 

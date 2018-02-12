@@ -13,21 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.okta.sdk.resource.group;
+package com.okta.sdk.resource.trooper;
 
 import com.okta.sdk.client.Client;
 import com.okta.sdk.lang.Classes;
+import com.okta.sdk.resource.Stormtrooper;
 
-public interface GroupBuilder {
+public interface StormtrooperBuilder {
 
-    static GroupBuilder instance() {
-        return Classes.newInstance("com.okta.sdk.impl.resource.DefaultGroupBuilder");
+    static StormtrooperBuilder instance() {
+        return Classes.newInstance("com.okta.sdk.impl.resource.DefaultStormtrooperBuilder");
     }
 
-    GroupBuilder setName(String name);
+    StormtrooperBuilder setId(String id);
 
-    GroupBuilder setDescription(String description);
+    StormtrooperBuilder setPlanetOfOrigin(String planetOfOrigin);
 
-    Group buildAndCreate(Client client);
+    StormtrooperBuilder setSpecies(String species);
 
+    StormtrooperBuilder setType(String type);
+
+    Stormtrooper buildAndCreate(Client client);
 }

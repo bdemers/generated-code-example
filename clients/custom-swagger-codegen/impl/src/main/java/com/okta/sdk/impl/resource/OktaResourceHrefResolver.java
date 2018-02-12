@@ -15,12 +15,9 @@
  */
 package com.okta.sdk.impl.resource;
 
-import com.okta.sdk.lang.Collections;
 import com.okta.sdk.resource.Resource;
-import com.okta.sdk.resource.application.AppUser;
-import com.okta.sdk.resource.application.Application;
-import com.okta.sdk.resource.group.Group;
-import com.okta.sdk.resource.group.rule.GroupRule;
+import com.okta.sdk.resource.Stormtrooper;
+import com.okta.sdk.resource.TieCraft;
 
 import java.util.Map;
 
@@ -30,10 +27,8 @@ import java.util.Map;
  * <p>
  * Known Objects:
  * <ul>
- *     <li>AppUser</li>
- *     <li>Application</li>
- *     <li>Group</li>
- *     <li>GroupRule</li>
+ *     <li>Stormtrooper</li>
+ *     <li>TieCraft</li>
  * </ul>
  *
  * @since 1.0
@@ -52,40 +47,14 @@ public class OktaResourceHrefResolver implements ResourceHrefResolver {
     }
 
     private <R extends Resource> String fixSelfHref(Map<String, ?> properties, Class<R> clazz) {
-
-        // the AppUsers object does NOT contain a self link, in this case we need build it based on the 'app' link
-        Map<String, ?> links = getMapValue(properties, "_links");
-        if (links != null) {
-            if (AppUser.class.isAssignableFrom(clazz)) {
-                Map<String, ?> self = getMapValue(links, "app");
-                if (!Collections.isEmpty(self)) {
-                    return self.get("href") + "/users/" + properties.get("id");
-                }
-            }
-            if (Application.class.isAssignableFrom(clazz)) {
-                Map<String, ?> self = getMapValue(links, "users");
-                if (!Collections.isEmpty(self)) {
-                    String href = self.get("href").toString();
-                    return href.substring(0, href.lastIndexOf("/users"));
-                }
-            }
+        if (Stormtrooper.class.isAssignableFrom(clazz)) {
+            return "/trooper/" + properties.get("id");
         }
 
-        if (Group.class.isAssignableFrom(clazz)) {
-            return "/api/v1/groups/" + properties.get("id");
+        if (TieCraft.class.isAssignableFrom(clazz)) {
+            return "/tie/" + properties.get("serial");
         }
 
-        if (GroupRule.class.isAssignableFrom(clazz)) {
-            return "/api/v1/groups/rules/" + properties.get("id");
-        }
-
-        return null;
-    }
-
-    private Map<String, ?> getMapValue(Map<String, ?> properties, String key) {
-        if (!Collections.isEmpty(properties)) {
-            return (Map<String, ?>) properties.get(key);
-        }
         return null;
     }
 }
