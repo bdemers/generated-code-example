@@ -77,7 +77,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>../standard-swagger.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/../standard-swagger.yaml</inputSpec>
                             <language>java</language>
                             <apiPackage>${gen.package}.api</apiPackage>
                             <modelPackage>${gen.package}.model</modelPackage>

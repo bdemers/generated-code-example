@@ -89,26 +89,32 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>mock-server</id>
-            <properties>
-                <okta.use.testServer>true</okta.use.testServer>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- easy way to start the server while developing -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pre-it</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                         <configuration>
-                            <systemPropertyVariables>
-                                <okta.use.testServer>${okta.use.testServer}</okta.use.testServer>
-                            </systemPropertyVariables>
+                            <workingDirectory>${project.basedir}/../../../server</workingDirectory>
+                            <executable>mvn</executable>
+                            <async>true</async>
                         </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

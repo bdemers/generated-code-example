@@ -6,11 +6,7 @@
 
     <groupId>com.okta.example.server</groupId>
     <artifactId>server</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>../clients/standard-swagger-codegen</module>
-    </modules>
 
     <properties>
         <dropwizard.version>1.2.2</dropwizard.version>
