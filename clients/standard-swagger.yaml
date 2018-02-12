@@ -1,0 +1,160 @@
+---
+swagger: "2.0"
+info:
+  description: "Simple example code to demonstrate different ways to generate code."
+  title: "Generate code that doesn't suck"
+  contact:
+    name: "Brian Demers"
+    email: "bdemers@apache.org"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+- name: "Stormtrooper"
+- name: "TIE Craft"
+schemes:
+- "http"
+paths:
+  /troopers:
+    get:
+      tags:
+      - "Stormtrooper"
+      operationId: "listTroopers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Stormtrooper"
+          headers: {}
+    post:
+      tags:
+      - "Stormtrooper"
+      operationId: "createTrooper"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Stormtrooper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Stormtrooper"
+          headers: {}
+  /troopers/{id}:
+    get:
+      tags:
+      - "Stormtrooper"
+      operationId: "getTrooper"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Stormtrooper"
+          headers: {}
+    post:
+      tags:
+      - "Stormtrooper"
+      operationId: "updateTrooper"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Stormtrooper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Stormtrooper"
+          headers: {}
+    delete:
+      tags:
+      - "Stormtrooper"
+      operationId: "deleteTrooper"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "successful operation"
+  /tie/{serial}:
+    get:
+      tags:
+      - "TIE Craft"
+      operationId: "getTieCraft"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "serial"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/TieCraft"
+          headers: {}
+  /tie:
+    get:
+      tags:
+      - "TIE Craft"
+      operationId: "listTieCraft"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/TieCraft"
+          headers: {}
+definitions:
+  Stormtrooper:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      planetOfOrigin:
+        type: "string"
+      species:
+        type: "string"
+      type:
+        type: "string"
+  TieCraft:
+    type: "object"
+    properties:
+      serial:
+        type: "string"
+      model:
+        type: "string"
+      craftClass:
+        type: "string"
