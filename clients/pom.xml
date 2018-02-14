@@ -17,6 +17,7 @@
 
     <modules>
         <module>standard-swagger-codegen</module>
+        <module>standard-swagger-v3-codegen</module>
         <module>custom-swagger-codegen</module>
     </modules>
 
