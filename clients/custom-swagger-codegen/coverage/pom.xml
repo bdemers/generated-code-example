@@ -20,26 +20,26 @@
 
     <parent>
         <groupId>com.okta.example.sdk</groupId>
-        <artifactId>okta-sdk-root</artifactId>
+        <artifactId>okta-example-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>okta-sdk-coverage</artifactId>
+    <artifactId>okta-example-sdk-coverage</artifactId>
     <name>Okta Java Example SDK :: Coverage</name>
     <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-api</artifactId>
+            <artifactId>okta-example-sdk-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-impl</artifactId>
+            <artifactId>okta-example-sdk-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-httpclient</artifactId>
+            <artifactId>okta-example-sdk-httpclient</artifactId>
         </dependency>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
@@ -48,7 +48,7 @@
         </dependency>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-integration-tests</artifactId>
+            <artifactId>okta-example-sdk-integration-tests</artifactId>
             <scope>test</scope>
         </dependency>
 

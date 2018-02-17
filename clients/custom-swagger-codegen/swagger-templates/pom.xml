@@ -20,11 +20,11 @@
 
     <parent>
         <groupId>com.okta.example.sdk</groupId>
-        <artifactId>okta-sdk-root</artifactId>
+        <artifactId>okta-example-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>okta-api-swagger-templates</artifactId>
+    <artifactId>okta-example-api-swagger-templates</artifactId>
     <name>Okta Java Example SDK :: Swagger Templates</name>
 
     <properties>

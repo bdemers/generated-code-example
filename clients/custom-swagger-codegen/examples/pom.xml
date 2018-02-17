@@ -20,11 +20,11 @@
 
     <parent>
         <groupId>com.okta.example.sdk</groupId>
-        <artifactId>okta-sdk-root</artifactId>
+        <artifactId>okta-example-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>okta-sdk-examples</artifactId>
+    <artifactId>okta-example-sdk-examples</artifactId>
     <groupId>com.okta.example.sdk</groupId>
     <name>Okta Java Example SDK :: Examples</name>
     <packaging>pom</packaging>

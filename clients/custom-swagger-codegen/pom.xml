@@ -25,7 +25,7 @@
     </parent>
 
     <groupId>com.okta.example.sdk</groupId>
-    <artifactId>okta-sdk-root</artifactId>
+    <artifactId>okta-example-sdk-root</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -60,29 +60,29 @@
             <!-- Inter project dependencies -->
             <dependency>
                 <groupId>com.okta.example.sdk</groupId>
-                <artifactId>okta-sdk-api</artifactId>
+                <artifactId>okta-example-sdk-api</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.okta.example.sdk</groupId>
-                <artifactId>okta-sdk-impl</artifactId>
+                <artifactId>okta-example-sdk-impl</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.okta.example.sdk</groupId>
-                <artifactId>okta-api-swagger-templates</artifactId>
+                <artifactId>okta-example-api-swagger-templates</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.okta.example.sdk</groupId>
-                <artifactId>okta-sdk-httpclient</artifactId>
+                <artifactId>okta-example-sdk-httpclient</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
 
             <!-- ITs -->
             <dependency>
                 <groupId>com.okta.example.sdk</groupId>
-                <artifactId>okta-sdk-integration-tests</artifactId>
+                <artifactId>okta-example-sdk-integration-tests</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
 
@@ -258,7 +258,7 @@
                     <dependencies>
                         <dependency>
                             <groupId>com.okta.example.sdk</groupId>
-                            <artifactId>okta-api-swagger-templates</artifactId>
+                            <artifactId>okta-example-api-swagger-templates</artifactId>
                             <version>1.0.1-SNAPSHOT</version>
                         </dependency>
                     </dependencies>

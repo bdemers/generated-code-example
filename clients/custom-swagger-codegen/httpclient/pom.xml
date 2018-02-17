@@ -20,11 +20,11 @@
 
     <parent>
         <groupId>com.okta.example.sdk</groupId>
-        <artifactId>okta-sdk-root</artifactId>
+        <artifactId>okta-example-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>okta-sdk-httpclient</artifactId>
+    <artifactId>okta-example-sdk-httpclient</artifactId>
     <name>Okta Java Example SDK :: Extensions :: HTTP Client</name>
     <description>
         The Okta Java Example SDK HTTP Client implementation .jar is used at runtime to make HTTP calls to Okta's
@@ -36,11 +36,11 @@
     <dependencies>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-api</artifactId>
+            <artifactId>okta-example-sdk-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-impl</artifactId>
+            <artifactId>okta-example-sdk-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

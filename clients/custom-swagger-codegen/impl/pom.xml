@@ -20,11 +20,11 @@
 
     <parent>
         <groupId>com.okta.example.sdk</groupId>
-        <artifactId>okta-sdk-root</artifactId>
+        <artifactId>okta-example-sdk-root</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>okta-sdk-impl</artifactId>
+    <artifactId>okta-example-sdk-impl</artifactId>
     <name>Okta Java Example SDK :: Impl</name>
     <description>
         TODO
@@ -34,7 +34,7 @@
     <dependencies>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-api</artifactId>
+            <artifactId>okta-example-sdk-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -101,7 +101,7 @@
                             <goal>codegen</goal>
                         </goals>
                         <configuration>
-                            <language>okta_java_impl</language>
+                            <language>custom_java_impl</language>
                         </configuration>
                     </execution>
                 </executions>

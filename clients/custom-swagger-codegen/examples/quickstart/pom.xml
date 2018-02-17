@@ -19,7 +19,7 @@
 
     <parent>
         <groupId>com.okta.example.sdk</groupId>
-        <artifactId>okta-sdk-examples</artifactId>
+        <artifactId>okta-example-sdk-examples</artifactId>
         <version>1.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -31,16 +31,16 @@
     <dependencies>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-api</artifactId>
+            <artifactId>okta-example-sdk-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-impl</artifactId>
+            <artifactId>okta-example-sdk-impl</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.okta.example.sdk</groupId>
-            <artifactId>okta-sdk-httpclient</artifactId>
+            <artifactId>okta-example-sdk-httpclient</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
