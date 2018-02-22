@@ -24,6 +24,7 @@ public class ExampleApplication extends Application<ExampleConfiguration> {
     public String getName() {
         return "server-example";
     }
+
     @Override
     public void initialize(Bootstrap<ExampleConfiguration> bootstrap) {
         // look up config yaml on the classpath
