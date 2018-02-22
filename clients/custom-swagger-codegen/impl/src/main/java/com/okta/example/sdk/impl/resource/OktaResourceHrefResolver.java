@@ -16,8 +16,8 @@
 package com.okta.example.sdk.impl.resource;
 
 import com.okta.example.sdk.resource.Resource;
-import com.okta.example.sdk.resource.Stormtrooper;
-import com.okta.example.sdk.resource.TieCraft;
+import com.okta.example.sdk.resource.tie.TieCraft;
+import com.okta.example.sdk.resource.troopers.Stormtrooper;
 
 import java.util.Map;
 

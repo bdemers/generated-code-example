@@ -1,11 +1,8 @@
 package com.okta.example.sdk.tests.it
 
 import com.okta.example.sdk.client.Client
-import com.okta.example.sdk.resource.Stormtrooper
 import com.okta.example.sdk.resource.trooper.StormtrooperBuilder
-import com.okta.example.sdk.client.Client
-import com.okta.example.sdk.resource.Stormtrooper
-import com.okta.example.sdk.resource.trooper.StormtrooperBuilder
+import com.okta.example.sdk.resource.troopers.Stormtrooper
 
 import static org.hamcrest.Matchers.*
 import static org.hamcrest.MatcherAssert.assertThat

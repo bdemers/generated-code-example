@@ -139,18 +139,18 @@ paths:
           headers: {}
 definitions:
   Stormtrooper:
-    type: "object"
-    x-okta-tags":
+    type: object
+    x-okta-tags:
     - troopers
     properties:
       id:
-        type: "string"
+        type: string
       planetOfOrigin:
-        type: "string"
+        type: string
       species:
-        type: "string"
+        type: string
       type:
-        type: "string"
+        type: string
     x-okta-crud:
     - alias: update
       operationId: updateTrooper
@@ -165,13 +165,13 @@ definitions:
       - dest: id
         src: id
   TieCraft:
-    type: "object"
-    x-okta-tags":
+    type: object
+    x-okta-tags:
     - tie
     properties:
       serial:
-        type: "string"
+        type: string
       model:
-        type: "string"
+        type: string
       craftClass:
-        type: "string"
+        type: string

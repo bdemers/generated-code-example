@@ -18,10 +18,10 @@ package quickstart;
 import com.okta.example.sdk.client.Client;
 import com.okta.example.sdk.client.ClientBuilder;
 import com.okta.example.sdk.client.Clients;
-import com.okta.example.sdk.resource.Stormtrooper;
-import com.okta.example.sdk.resource.StormtrooperList;
 import com.okta.example.sdk.resource.ResourceException;
 import com.okta.example.sdk.resource.trooper.StormtrooperBuilder;
+import com.okta.example.sdk.resource.troopers.Stormtrooper;
+import com.okta.example.sdk.resource.troopers.StormtrooperList;
 
 import java.util.UUID;
 

@@ -1,11 +1,8 @@
 package com.okta.example.sdk.impl.resource;
 
 import com.okta.example.sdk.client.Client;
-import com.okta.example.sdk.resource.Stormtrooper;
 import com.okta.example.sdk.resource.trooper.StormtrooperBuilder;
-import com.okta.example.sdk.client.Client;
-import com.okta.example.sdk.resource.Stormtrooper;
-import com.okta.example.sdk.resource.trooper.StormtrooperBuilder;
+import com.okta.example.sdk.resource.troopers.Stormtrooper;
 
 public class DefaultStormtrooperBuilder implements StormtrooperBuilder {
 
